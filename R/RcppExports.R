@@ -3,9 +3,13 @@
 
 #' Run a single replicate individual-based simulation
 #' @param ngenerations Number of generations (integer)
+#' @param d1 Juvenile dispersal probability species 1 (double)
+#' @param d2 Juvenile dispersal probability species 2 (double)
+#' @param npp1 Number of adults of species 1 per patch (integer)
+#' @param npp2 Number of adults of species 2 per patch (integer)
 #' @export
 #' @rawNamespace importFrom(Rcpp,sourceCpp);useDynLib(mutualismLH);
-ibm <- function(ngenerations) {
-    .Call('_mutualismLH_ibm', PACKAGE = 'mutualismLH', ngenerations)
+ibm <- function(ngenerations = 10L, d1 = 0.5, d2 = 0.5, npp1 = 2L, npp2 = 2L) {
+    .Call('_mutualismLH_ibm', PACKAGE = 'mutualismLH', ngenerations, d1, d2, npp1, npp2)
 }
 
